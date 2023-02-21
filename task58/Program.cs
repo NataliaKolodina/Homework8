@@ -7,19 +7,27 @@
 // 15 18
 
 Console.Clear();
-Console.WriteLine("Введите количество строк первой матрицы: ");
-int rows = int.Parse(Console.ReadLine()!)!;
-Console.WriteLine("Введите количество столбцов массивов: ");
-int colums = int.Parse(Console.ReadLine()!)!;
 
-int[,] array1 = GetArray(rows, colums, 0, 10);
+int rows1 = InputNum("Введите количество строк первой матрицы: ");
+int colums1 = InputNum("Введите количество столбцов первой матриыц: ");
+int rows2 = InputNum("Введите количество строк второй матрицы: ");
+int colums2 = InputNum("Введите количество столбцов второй матрицы: ");
+
+int[,] array1 = GetArray(rows1, colums2, -10, 10);
 PrintArray(array1);
 Console.WriteLine();
-int[,] array2 = GetArray(colums, rows, 0, 10);
+int[,] array2 = GetArray(rows2, colums2, -10, 10);
 PrintArray(array2);
 Console.WriteLine();
-int[,] arrayRes = MatrixMultiplication(array1, array2);
-PrintArray(arrayRes);
+int[,] arrayResult = MatrixMultiplication(array1, array2);
+PrintArray(arrayResult);
+
+int InputNum(string message)
+{
+    Console.Write($"{message}: ");
+    int res = int.Parse(Console.ReadLine()!);
+    return res;
+}
 
 int[,] GetArray(int m, int n, int minValue, int maxValue)
 {
@@ -49,18 +57,25 @@ void PrintArray(int[,] inArray)
 int[,] MatrixMultiplication(int[,] arr1, int[,] arr2)
 {
     int[,] res = new int[arr1.GetLength(0), arr2.GetLength(1)];
-    for (int i = 0; i < arr1.GetLength(0); i++)
+    if (arr1.GetLength(0) == arr2.GetLength(1))
     {
-        for (int j = 0; j < arr2.GetLength(1); j++)
+        for (int i = 0; i < arr1.GetLength(0); i++)
         {
-            int sum = 0;
-            for (int k = 0; k < arr1.GetLength(0); k++)
+            for (int j = 0; j < arr2.GetLength(1); j++)
             {
-                int a = (arr1[i, k] * arr2[k, j]);
-                sum = sum + a;
+                int sum = 0;
+                for (int k = 0; k < arr1.GetLength(0); k++)
+                {
+                    int a = (arr1[i, k] * arr2[k, j]);
+                    sum = sum + a;
+                }
+                res[i, j] = sum;
             }
-            res[i, j] = sum;
         }
+    }
+    else
+    {
+        Console.WriteLine("Переумножение матриц невозможно");
     }
     return res;
 }
