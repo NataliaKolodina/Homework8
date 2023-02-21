@@ -45,26 +45,20 @@ void PrintArray(int[,] inArray)
     }
 }
 
-void MinMaxArray(int[,] arr)
+int[] MinMaxArray(int[,] arr)
 {
-    for (int i = 0; i < arr.GetLength(0); i++)
+    int[] row = new int[arr.GetLength(1)];
+    for (int i = 0; i < arr.GetLength(1); i++)
     {
-        int max = arr[i, 0];
         for (int j = 1; j < arr.GetLength(1); j++)
         {
-            if (arr[i, j] > max)
+            if (row[i] > row[j])
             {
-                int temp = arr[i, j];
-                arr[i, j] = max;
-                max = temp;
-                max = arr[i, j];
-                Console.Write($"{max} ");
-            }
-            else
-            {
-                Console.Write($"{arr[i, j]} ");
+                int temp = row[i];
+                row[i] = row[j];
+                row[j] = temp;
             }
         }
-        Console.WriteLine();
     }
+    return row;
 }
