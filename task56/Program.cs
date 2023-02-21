@@ -12,7 +12,7 @@ int rows = int.Parse(Console.ReadLine()!)!;
 Console.WriteLine("Введите количество столбцов массива: ");
 int colums = int.Parse(Console.ReadLine()!)!;
 
-int[,] array = GetArray(rows, colums, 1, 3);
+int[,] array = GetArray(rows, colums, 1, 10);
 PrintArray(array);
 Console.WriteLine();
 int[] array1 = SumElemRows(array);
