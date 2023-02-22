@@ -75,7 +75,7 @@ int[,] MatrixMultiplication(int[,] arr1, int[,] arr2)
     }
     else
     {
-        Console.WriteLine("Переумножение матриц невозможно");
+        Console.WriteLine("Перемножение матриц невозможно");
     }
     return res;
 }
