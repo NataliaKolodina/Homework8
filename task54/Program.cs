@@ -15,10 +15,11 @@ int rows = int.Parse(Console.ReadLine()!)!;
 Console.WriteLine("Введите количество столбцов массива: ");
 int colums = int.Parse(Console.ReadLine()!)!;
 
-int[,] array = GetArray(rows, colums, 1, 10);
+int[,] array = GetArray(rows, colums, -10, 10);
 PrintArray(array);
 Console.WriteLine();
-MinMaxArray(array);
+SortArray(array);
+PrintArray(array);
 
 int[,] GetArray(int m, int n, int minValue, int maxValue)
 {
@@ -45,20 +46,21 @@ void PrintArray(int[,] inArray)
     }
 }
 
-int[] MinMaxArray(int[,] arr)
+void SortArray(int[,] arr)
 {
-    int[] row = new int[arr.GetLength(1)];
-    for (int i = 0; i < arr.GetLength(1); i++)
+    for (int i = 0; i < arr.GetLength(0); i++)
     {
-        for (int j = 1; j < arr.GetLength(1); j++)
+        for (int j = 0; j < arr.GetLength(1); j++)
         {
-            if (row[i] > row[j])
+            for (int k = 0; k < arr.GetLength(1); k++)
             {
-                int temp = row[i];
-                row[i] = row[j];
-                row[j] = temp;
+                if (arr[i, j] > arr[i, k])
+                {
+                    int temp = arr[i, j];
+                    arr[i, j] = arr[i, k];
+                    arr[i, k] = temp;
+                }
             }
         }
     }
-    return row;
 }
