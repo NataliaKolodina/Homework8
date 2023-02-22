@@ -7,6 +7,7 @@
 
 Console.Clear();
 
+const int cellWidth = 2;
 int[,] array = GetArray();
 PrintArray(array);
 
@@ -67,7 +68,7 @@ void PrintArray(int[,] inArray)
     {
         for (int j = 0; j < inArray.GetLength(1); j++)
         {
-            Console.Write($"{inArray[i, j]} ");
+            Console.Write($"{inArray[i, j], cellWidth} ");
         }
         Console.WriteLine();
     }
