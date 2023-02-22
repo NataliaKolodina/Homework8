@@ -21,31 +21,38 @@ int[,] GetArray()
         result[i, j] = num;
         num++;
     }
+    j = 3;
     for (i = 1; i < 4; i++)
     {
         result[i, j] = num;
         num++;
     }
+    i = 3;
     for (j = 2; j >= 0; j--)
     {
         result[i, j] = num;
         num++;
     }
+    j = 0;
     for (i = 2; i > 0; i--)
     {
         result[i, j] = num;
         num++;
     }
+    i = 1;
     for (j = 1; j < 3; j++)
     {
         result[i, j] = num;
         num++;
     }
+    j = 2;
+
     for (i = 2; i < 3; i++)
     {
         result[i, j] = num;
         num++;
     }
+    i = 2;
     for (j = 1; j > 0; j--)
     {
         result[i, j] = num;
