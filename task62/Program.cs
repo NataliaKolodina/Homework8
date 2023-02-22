@@ -6,43 +6,51 @@
 // 10 09 08 07
 
 Console.Clear();
-Console.WriteLine("Введите количество строк массива: ");
-int rows = int.Parse(Console.ReadLine()!)!;
-Console.WriteLine("Введите количество столбцов массива: ");
-int colums = int.Parse(Console.ReadLine()!)!;
 
-int[,] array = GetArray(rows, colums, 1, 10);
+int[,] array = GetArray();
 PrintArray(array);
 
-int[,] GetArray(int m, int n, int minValue, int maxValue)
+int[,] GetArray()
 {
-    int[,] result = new int[m, n];
+    int num = 01;
+    int[,] result = new int[4, 4];
     int i = 0;
-    for (int j = 0; j < n; j++)
+    int j = 0;
+    for (j = 0; j < 4; j++)
     {
-        result[i, j] = new Random().Next(minValue, maxValue);
+        result[i, j] = num;
+        num++;
     }
-    int j = n;
-    for (int i = 1; i < m; i++)
+    for (i = 1; i < 4; i++)
     {
-        result[i, j] = new Random().Next(minValue, maxValue);
+        result[i, j] = num;
+        num++;
     }
-    i = m;
-    for (int j = n - 1; j >= 0; j--)
+    for (j = 2; j >= 0; j--)
     {
-        result[i, j] = new Random().Next(minValue, maxValue);
+        result[i, j] = num;
+        num++;
     }
-    j = 0;
-    for (int i = m - 1; i > 0; i--)
+    for (i = 2; i > 0; i--)
     {
-        result[i, j] = new Random().Next(minValue, maxValue);
+        result[i, j] = num;
+        num++;
     }
-    i = 1;
-    for (int j = 1; j < m - 1; j++)
+    for (j = 1; j < 3; j++)
     {
-        result[i, j] = new Random().Next(minValue, maxValue);
+        result[i, j] = num;
+        num++;
     }
-
+    for (i = 2; i < 3; i++)
+    {
+        result[i, j] = num;
+        num++;
+    }
+    for (j = 1; j > 0; j--)
+    {
+        result[i, j] = num;
+        num++;
+    }
     return result;
 }
 
